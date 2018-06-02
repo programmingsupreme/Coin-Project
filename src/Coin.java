@@ -175,8 +175,72 @@ public class Coin {
 			
 			if(ans == 4) {
 				
-				System.out.println("This option is not developed yet. Contact nadathurvikram@gmail.com for further info.");
+				//System.out.println("This option is not developed yet. Contact nadathurvikram@gmail.com for further info.");
 				
+				//Get user input
+				System.out.println("Enter the number of quaters.");
+				int quaters = sc.nextInt();
+				System.out.println("Enter the number of dimes.");
+				int dimes= sc.nextInt();
+				System.out.println("Enter the number of nickels.");
+				int nickels = sc.nextInt();
+				System.out.println("Enter the number of pennies.");
+				int pennies = sc.nextInt();
+				
+				{
+					//Get total cents
+					int totcents = quaters*25 + dimes*10 + nickels*5 + pennies, q1 = quaters, d1 =dimes, n1 = nickels;
+					System.out.println("Totcents:" + totcents);
+					quaters = totcents/25;
+					System.out.println("Quaters before " + quaters);
+					if(quaters>q1) {
+						
+						int diff = quaters - q1;
+						System.out.println("Diff: " + diff);
+						quaters = quaters - diff;
+						System.out.println("Quaters after " + quaters);
+						totcents = totcents - (quaters*25);
+						totcents+= diff*25;
+						System.out.println("Totcentsq:" + totcents);
+						
+					}
+					else {
+						totcents -= quaters*25;
+					}	
+					
+					dimes = totcents/10;
+					if(dimes>d1) {
+						
+						int diff = dimes - d1;
+						dimes -= d1;
+						totcents -= dimes*10;
+						totcents+= diff*10;
+						System.out.println("Totcentsd:" + totcents);
+						
+					}
+					else {
+						totcents -= dimes*10;
+					}
+					
+					nickels = totcents/5;
+					if(nickels>n1) {
+						
+						int diff = nickels - n1;
+						nickels -= n1;
+						totcents -= nickels*5;
+						totcents+= diff*5;
+						System.out.println("Totcentsn:" + totcents);
+						
+					}
+					else {
+						totcents -= nickels*5;
+					}
+					
+					pennies = totcents;
+					
+					System.out.println("Using the least possible coins the best way to make the total amount " + ((quaters*25)+(dimes*10)+(nickels*5)+pennies) + " is by using: " + quaters + " quaters, " + dimes +" dimes, " + nickels + " nickels, " + pennies + " pennies.");
+				
+				}	
 			}
 		}
 
