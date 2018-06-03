@@ -188,58 +188,44 @@ public class Coin {
 				int pennies = sc.nextInt();
 				
 				{
+					
 					//Get total cents
-					int totcents = quaters*25 + dimes*10 + nickels*5 + pennies, q1 = quaters, d1 =dimes, n1 = nickels;
-					System.out.println("Totcents:" + totcents);
+					int totcents = (quaters*25) + (dimes*10) + (nickels*5) + pennies,q1=quaters,d1=dimes,n1=nickels, finalcents = totcents;
+					
 					quaters = totcents/25;
-					System.out.println("Quaters before " + quaters);
-					if(quaters>q1) {
+					totcents %= 25;
+					if(quaters<q1) { // Why not (quaters>q1)
 						
-						int diff = quaters - q1;
-						System.out.println("Diff: " + diff);
-						quaters = quaters - diff;
-						System.out.println("Quaters after " + quaters);
-						totcents = totcents - (quaters*25);
-						totcents+= diff*25;
-						System.out.println("Totcentsq:" + totcents);
+						int diff = quaters -q1;
+						quaters -= diff;
+						totcents += (diff*25);
 						
 					}
-					else {
-						totcents -= quaters*25;
-					}	
 					
 					dimes = totcents/10;
+					totcents%=10;
 					if(dimes>d1) {
 						
-						int diff = dimes - d1;
-						dimes -= d1;
-						totcents -= dimes*10;
-						totcents+= diff*10;
-						System.out.println("Totcentsd:" + totcents);
+						int diff = dimes-d1;
+						dimes -= diff;
+						totcents += (diff*10);
 						
-					}
-					else {
-						totcents -= dimes*10;
 					}
 					
 					nickels = totcents/5;
+					totcents %= 5;
 					if(nickels>n1) {
 						
-						int diff = nickels - n1;
-						nickels -= n1;
-						totcents -= nickels*5;
-						totcents+= diff*5;
-						System.out.println("Totcentsn:" + totcents);
+						int diff = nickels-n1;
+						nickels -= diff;
+						totcents += (diff*5);
 						
-					}
-					else {
-						totcents -= nickels*5;
 					}
 					
 					pennies = totcents;
 					
-					System.out.println("Using the least possible coins the best way to make the total amount " + ((quaters*25)+(dimes*10)+(nickels*5)+pennies) + " is by using: " + quaters + " quaters, " + dimes +" dimes, " + nickels + " nickels, " + pennies + " pennies.");
-				
+					System.out.println("The best way to make " + finalcents +" using the coins given is by using " +  quaters +" Quaters, " + dimes + " Dimes, " + nickels + " Nickels, " + pennies + " Pennies."); 
+					
 				}	
 			}
 		}
